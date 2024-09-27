@@ -1,78 +1,78 @@
 <!DOCTYPE html>
-<超文本标记语言语言=" zh ">
-<头>
-    <自指的字符集=“UTF八号”>
-    <自指的名字="视窗" 内容=宽度=设备宽度，初始比例=1.0>
-    <标题>作品展示</标题>
-    <风格>
-身体{
-            字体系列: 阿里亚尔, 无衬线字体;
-            背景: 全球资源定位器(Uniform Resource Locator)('https://cdn.seovx.com/d/？妈妈=302 ') 不重复 中心 中心 固定的；不变的;
-            背景尺寸: 涉及;
-            颜色:# fff
-            边缘: 0;
-            填料: 0;
-            显示: 弯曲;
-            弯曲方向: 圆柱;
-            对齐-项目: 中心;
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作品展示</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('https://cdn.seovx.com/d/?mom=302') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-氕{
-            文本对齐: 中心;
-            上边距: 50像素;
-            文本阴影: 2像素 2像素 4像素 rgba(0, 0, 0, 0.7);
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
         }
-。容器{
-            宽度: 90%;
-            最大宽度: 1200像素;
-            边缘: 30像素 汽车;
-            显示: 格子;
-            网格-模板-列: 重复(自动填充, 最小最大值(250像素, 1神父));
-            缝隙: 20像素;
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 30px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
         }
-。工作项目{
-            背景: rgba(255, 255, 255, 0.9);
-            边框半径: 10像素;
-            箱形阴影: 0 4像素 20像素 rgba(0, 0, 0, 0.2);
-            泛滥: 隐藏的;
-            过渡: 改变 0.3s, 箱形阴影 0.3s;
+        .work-item {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-。工作项目:盘旋 {
-            改变: 翻译(-5像素);
-            箱形阴影: 0 6像素 30像素 rgba(0, 0, 0, 0.3);
+        .work-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
         }
-。工作项a{
-            显示: 街区;
-            填料: 20像素;
-            文本装饰: 没有人;
-            颜色: #333;
-            字体粗细: 大胆的;
-            文本对齐: 中心;
-            字体大小: 1.2全身长的;
-            边框-底部: 3像素 固体# 4 caf 50；
-            过渡: 颜色 0.3s;
+        .work-item a {
+            display: block;
+            padding: 20px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            text-align: center;
+            font-size: 1.2em;
+            border-bottom: 3px solid #4CAF50;
+            transition: color 0.3s;
         }
-。工作项目a:盘旋 {
-            颜色:# 4c af 50；
+        .work-item a:hover {
+            color: #4CAF50;
         }
-    </风格>
-</头>
-<身体>
-    <氕>我的作品展示</氕>
-    <差异班级="集装箱" 身份证明（identification）="工作列表"></差异>
+    </style>
+</head>
+<body>
+    <h1>我的作品展示</h1>
+    <div class="container" id="work-list"></div>
 
-    <脚本>
-        取得(' zp.txt ')
-            .然后(反应= >回应。文本())
-            .然后(数据 => {
-                常数 作品=数据。使分离('\n');
-                常数 工作列表=文档。getElementById('工作列表');
-作品。为每一个(项目 => {
-                    常数 差异=文档。createElement(div ');
-div。类名 = '工作项目';
-div。innerHTML = `< a href= "${项目。整齐()}">${项目。整齐()}</a>`;
-工作列表。appendChild(差异);
+    <script>
+        fetch('zp.txt')
+            .then(response => response.text())
+            .then(data => {
+                const works = data.split('\n');
+                const workList = document.getElementById('work-list');
+                works.forEach(item => {
+                    const div = document.createElement('div');
+                    div.className = 'work-item';
+                    div.innerHTML = `<a href="${item.trim()}">${item.trim()}</a>`;
+                    workList.appendChild(div);
                 });
             });
-    </脚本>
-</身体>
-</超文本标记语言>
+    </script>
+</body>
+</html>
