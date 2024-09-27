@@ -67,9 +67,13 @@
                 const works = data.split('\n');
                 const workList = document.getElementById('work-list');
                 works.forEach(item => {
+                    const [path, title] = item.split('(');
+                    const trimmedPath = path.trim();
+                    const trimmedTitle = title ? title.replace(')', '').trim() : '';
+                    
                     const div = document.createElement('div');
                     div.className = 'work-item';
-                    div.innerHTML = `<a href="${item.trim()}">${item.trim()}</a>`;
+                    div.innerHTML = `<a href="${trimmedPath}">${trimmedTitle}</a>`;
                     workList.appendChild(div);
                 });
             });
